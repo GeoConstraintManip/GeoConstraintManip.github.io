@@ -1,1 +1,342 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Geometric Constraint as General Interface for Robot Manipulation">
+
+    <title>Geometric Constraint as General Interface for Robot Manipulation</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet " type="text/css " href="slick/slick.css" />
+    <link rel="stylesheet " type="text/css " href="slick/slick-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container"></div>
+        <h1 style="text-align: center; font-size: 48px">Geometric Constraint as General Interface for Robot Manipulation</h1>
+        <div class="authors">
+        <div style="text-align: center; font-size: 24px;"><a href="https://CUHKWilliam.github.io">Weiliang Tang </a>, Jiahui Pan, <a href="https://msc.berkeley.edu/people/tomizuka.html">Masayoshi Tomizuka</a>, <a href="https://www.cs.columbia.edu/~lierranli/">Li Erran Li</a>,</div>
+        <div style="text-align: center; font-size: 24px;"><a href="https://www.cse.cuhk.edu.hk/~cwfu/">Chi-Wing Fu</a>, <a href="https://dingmyu.github.io"> Mingyu Ding</a></div>
+            
+        <div class="small container">
+            <div class="row align-items-center">
+                <div class="col justify-content-center"><img src="img/cuhk.png" width="100%"></div>
+                <div class="col justify-content-center"><img src="img/ucb.svg" width="100%"></div>
+                <div class="col justify-content-center"><img src="img/amz.png" width="100%"></div>
+                <div class="col justify-content-center"><img src="img/hkclr.png" width="100%"></div>
+                <div class="col justify-content-center"><img src="img/msc.jpg" width="100%"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="btn-container" style="text-align: center;font-size: 18px;">
+        <a href=""><span class="button-34"><i class="fa fa-file-pdf-o"></i> Paper</span></a>
+        <a href=""><span class="button-34"><i class="fa fa-file-pdf-o"></i> Appendix</span></a>
+        <a href="="><span class="button-34"><i class="fa fa-file-code-o"></i> Code</span></a>
+    </div>
+
+    <div class="container ">
+        <video controls width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+            <source src="video/long-horizon.mp4" type="video/mp4">
+        </video>
+        <p><br /></p>
+
+        <div class="section " id="framework">
+            <h2>Framework Overview</h2>
+            <hr>
+            <div class="row">
+                <img src="img/method_overview.png" width="100% ">
+            </div>
+            <p>Given language instruction, our framework is composed of:<br /></p>
+            <ul>
+                <li>(1). Task decomposition and flow control generation.</li>
+                <li>(2). Geometric constraints generation for each stage.</li>
+                <li>(3). Translate geometric constraints into cost functions</li>
+                <li>(4). Solve for the trajectory with optimization to minimize the overall costs</li>
+                <li>(5). The robot executes according to predicted gripper's poses and trajectory.</li>
+            </ul>
+            <p><br /></p>
+        </div>
+
+        <div class="section ">
+            <a id="realresults"></a>
+            <div class="text-center">
+                <h2>MetaWorld Environment</h2>
+            </div>
+            <hr>
+            <p><br /></p>
+            <div class="row imgrow">
+                <div class="col justify-content-center text-center ">
+                    <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="video/put_basketball_into_hoop.mp4" type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Put the basketball onto the red hoop</div>
+                    </div>
+                </div>
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Press the handle</div>
+                    </div>
+                </div>
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Press the button</div>
+                    </div>
+                </div>
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Press the button from the side</div>
+                    </div>
+                </div>
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Smash the nail with the hammer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row imgrow">
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Place the box onto the shelf.</div>
+                    </div>
+                </div>
+                <div class="col justify-content-center text-center ">
+                    <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                        <source src="img/Real/put_banana_in_plate.mp4 " type="video/mp4 ">
+                    </video>
+                    <div class="overlay ">
+                        <div class="text "><b>Task: </b>Place the .</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="section ">
+                <a id="realresults"></a>
+                <div class="text-center">
+                    <h2>OmniGibson Environment</h2>
+                </div>
+                <hr>
+                <p><br /></p>
+                <div class="row imgrow">
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/put_pen_into_black_cup2.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Put pen into pen-holder</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/cut_carrot.mp4 " type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Cut carrot with the knife</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/open_fridge.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Open the fridge</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/open_fridge_a_little.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Open the fridge a little bit</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/type_hi.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Type "Hi"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="section">
+                <a id="realresults"></a>
+                <div class="text-center">
+                    <h2>RealWorld Deployment</h2>
+                </div>
+                <hr>
+                <p>We deploy our method on FANUC Mate 200iD robot, with a RealSense D435 camera. <br /></p>
+                <div class="row imgrow">
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/pour_water_from_cup_to_pan.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Pour water from cup to pan</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/pour_water_to_pan_put_to_wooden_tray.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Pour water from cup to pan, and put it to wooden tray</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/add_macaroni_to_pan.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Pour macaroni to pan</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/press_start.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Press start button on the induction cooktop</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="a100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/put_banana_to_wooden_tray.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay ">
+                            <div class="text "><b>Task: </b>Put banana into the wooden tray</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row imgrow">
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/stir_bowl_with_spoon.mp4 " type="video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Stir bowl with spoon</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/turn_nut.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Turn nut</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/open_microwave.mp4 " type="video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Open microwave</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/close_microwave.mp4" type="video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Close microwave</div>
+                        </div>
+                    </div>
+                    <div class="col justify-content-center text-center ">
+                        <video width="100% " playsinline=" " autoplay=" " loop=" " preload=" " muted=" ">
+                            <source src="video/put_pan_onto_induction_cooktop.mp4"video/mp4 ">
+                        </video>
+                        <div class="overlay">
+                            <div class="text "><b>Task: </b>Put pan onto induction cooktop</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="section">
+            <a id="bib"></a>
+            <h2>BibTex</h2>
+            <!-- gray background -->
+            <pre style="background-color: #eeeeee; padding: 10px; border-radius: 5px; ">
+                <code>
+@article{Ko2023Learning,
+title={{Learning to Act from Actionless Videos through Dense Correspondences}},
+author={Ko, Po-Chen and Mao, Jiayuan and Du, Yilun and Sun, Shao-Hua and Tenenbaum, Joshua B},
+journal={arXiv:2310.08576},
+year={2023},
+}
+                </code>
+            </pre>
+            <p><br /></p>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js " integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI " crossorigin="anonymous "></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script type="text/javascript">
+        $('.carousel1').slick({
+            slidesToShow: 1,
+            infinite: true,
+            dots: true,
+        });
+
+        $('.carousel3').slick({
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+        });
+
+        $('.carousel4').slick({
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            infinite: true,
+            dots: true,
+        });
+
+        $('.carousel5').slick({
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            infinite: true,
+            dots: true,
+        });
+    </script>
+</body>
+
+</html>
