@@ -62,9 +62,26 @@
             <ul>
                 <li>(1). Task decomposition and flow control generation.</li>
                 <li>(2). Geometric constraints generation for each stage.</li>
-                <li>(3). Translate geometric constraints into cost functions</li>
-                <li>(4). Solve for the trajectory with optimization to minimize the overall costs</li>
-                <li>(5). The robot executes according to predicted gripper's poses and trajectory.</li>
+                <li>(3). Identify necessary geometric parts.</li>
+                <li>(4). Translate geometric constraints into cost functions</li>
+                <li>(5). Solve for the trajectory with optimization to minimize the overall costs</li>
+                <li>(6). The robot executes according to predicted gripper's poses and trajectory.</li>
+            </ul>
+            <p><br /></p>
+        </div>
+        <div class="section " id="framework">
+            <h2>Geometric part Identification Module</h2>
+            <hr>
+            <div class="row">
+                <img src="img/geometric_part_identification.png" width="49% ">
+                <img src="img/geometric_part_identification2.png" width="49% ">
+            </div>
+            <p>Given language description of the geometric part, the module:<br /></p>
+            <ul>
+                <li>(1). Use GroundingDINO to locate object.</li>
+                <li>(2). Apply Segment Anything Model to generate all part-level masks.</li>
+                <li>(3). Ask VLM model to select mask corresponding to the object part.</li>
+                <li>(4). Ask VLM model to generate post-processing function to process the object part mask.</li>
             </ul>
             <p><br /></p>
         </div>
